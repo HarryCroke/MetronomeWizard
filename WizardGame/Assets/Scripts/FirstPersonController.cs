@@ -16,7 +16,7 @@ using UnityEngine.UI;
 
 public class FirstPersonController : MonoBehaviour
 {
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     #region Camera Movement Variables
 
@@ -459,14 +459,14 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
-    private void Jump()
+    public void Jump()
     {
         // Adds force to the player rigidbody to jump
-        if (isGrounded)
-        {
+        //if (isGrounded)
+        //{
             rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
             isGrounded = false;
-        }
+        //}
 
         // When crouched and using toggle system, will uncrouch for a jump
         if(isCrouched && !holdToCrouch)
@@ -686,7 +686,7 @@ public class FirstPersonController : MonoBehaviour
 
         GUI.enabled = fpc.enableJump;
         fpc.jumpKey = (KeyCode)EditorGUILayout.EnumPopup(new GUIContent("Jump Key", "Determines what key is used to jump."), fpc.jumpKey);
-        fpc.jumpPower = EditorGUILayout.Slider(new GUIContent("Jump Power", "Determines how high the player will jump."), fpc.jumpPower, .1f, 20f);
+        fpc.jumpPower = EditorGUILayout.Slider(new GUIContent("Jump Power", "Determines how high the player will jump."), fpc.jumpPower, .1f, 3000f);
         GUI.enabled = true;
 
         EditorGUILayout.Space();

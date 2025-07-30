@@ -7,13 +7,14 @@ public class Spells : MonoBehaviour
     public FirstPersonController Player;
     
     public float DashSpeed;
+    public GameObject FireboltPrefab;
     
     public void CastSpell(SpellType type)
     {
         switch (type)
         {
             case SpellType.Firebolt:
-                print("Fire!");
+                Firebolt();
                 break;
             
             case SpellType.Jump:
@@ -39,6 +40,13 @@ public class Spells : MonoBehaviour
     {
         Vector3 targetVelocity = transform.TransformDirection(new Vector3(0,0,DashSpeed));
         Player.rb.AddForce(targetVelocity, ForceMode.VelocityChange);
+    }
+
+    private void Firebolt()
+    {
+        GameObject f = Instantiate(FireboltPrefab, transform.position + new Vector3(0,0.5f,0), Quaternion.identity);
+        Projectile p = f.GetComponent<Projectile>();
+        p.Direction = transform.forward;
     }
 
 }

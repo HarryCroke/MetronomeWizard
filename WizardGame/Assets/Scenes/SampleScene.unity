@@ -3715,13 +3715,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 829965876}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50, y: 0, z: -12}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -19.79019, y: -15.41232, z: -5.1802626}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1461089532}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &979049064
 GameObject:
@@ -4195,6 +4195,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 15353766}
+  - {fileID: 829965882}
   m_Father: {fileID: 1537749772}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4721,6 +4722,10 @@ PrefabInstance:
       propertyPath: DashSpeed
       value: 65
       objectReference: {fileID: 0}
+    - target: {fileID: 9083277547662872178, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: FireboltPrefab
+      value: 
+      objectReference: {fileID: 4896672449313960809, guid: fe1ed2b51bb577c4eb0f0cb71f3a41cc, type: 3}
     - target: {fileID: 9083277547662872179, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: MetronomeUI
       value: 

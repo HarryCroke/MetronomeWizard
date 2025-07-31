@@ -18,7 +18,9 @@ public class Metronome : MonoBehaviour
     [FormerlySerializedAs("BPM")] public float Bpm;
     private float delay;
     private int beat = 0;
-    
+
+    public delegate void OnBeat();
+    public static OnBeat onBeat;
     
     // This is only used for UI (bug fix)
     [NonSerialized]
@@ -51,8 +53,9 @@ public class Metronome : MonoBehaviour
             Spells.CastSpell(SpellList[beat]);
             AudioSource.PlayOneShot(AudioClip);
         }
-        
 
+        if (onBeat != null) onBeat();
+        
         print(beat);
         
         beat += 1;

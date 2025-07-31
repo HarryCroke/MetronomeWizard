@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
-public class LightFlicker : MonoBehaviour
+public class LightFlicker : MonoBehaviour, IPulseReceiver
 {
     
     [SerializeField] [Tooltip("Light intensity during animation")]
@@ -25,22 +25,28 @@ public class LightFlicker : MonoBehaviour
     [SerializeField] [Tooltip("Random range to multiply animation length by")]
     public Vector2 AnimationVariance = new Vector2(1,1);
     
-    // Start is called before the first frame update
+    // // Start is called before the first frame update
     void Start()
     {
         animationProgress = UnityEngine.Random.value;
         AnimationLength *= UnityEngine.Random.Range(AnimationVariance.x, AnimationVariance.y);
+        Metronome.onBeat += OnMetronomePulse;
     }
+    //
+    // // Update is called once per frame
+    // void Update()
+    // {
+    //     animationProgress += Time.deltaTime / AnimationLength;
+    //     PointLight.intensity = InitialIntensity + IntensityCurve.Evaluate(animationProgress);
+    //     if (animationProgress >= 1)
+    //     {
+    //         animationProgress = 0;
+    //     }
+    //     
+    // }
 
-    // Update is called once per frame
-    void Update()
+    public void OnMetronomePulse()
     {
-        animationProgress += Time.deltaTime / AnimationLength;
-        PointLight.intensity = InitialIntensity + IntensityCurve.Evaluate(animationProgress);
-        if (animationProgress >= 1)
-        {
-            animationProgress = 0;
-        }
-        
+        print("Got your message");
     }
 }

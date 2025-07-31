@@ -10,9 +10,10 @@ public class LightFlicker : MonoBehaviour, IPulseReceiver
     private AnimationCurve IntensityCurve;
     // Current progress along the throw curve
     private float animationProgress;
+
     [SerializeField] [Tooltip("Starting Intensity value")]
     // Position when scene is loaded
-    private float InitialIntensity;
+    private float InitialIntensity, InitialRange;
     
     [SerializeField] [Tooltip("Reference to flickering light")]
     private Light PointLight;
@@ -28,9 +29,8 @@ public class LightFlicker : MonoBehaviour, IPulseReceiver
     // // Start is called before the first frame update
     void Start()
     {
-        animationProgress = UnityEngine.Random.value;
-        AnimationLength *= UnityEngine.Random.Range(AnimationVariance.x, AnimationVariance.y);
         Metronome.onBeat += OnMetronomePulse;
+        AnimationLength = GameObject.Find("FirstPersonController").GetComponent<Metronome>().delay;
     }
     //
     // // Update is called once per frame
@@ -38,12 +38,15 @@ public class LightFlicker : MonoBehaviour, IPulseReceiver
     {
         animationProgress += Time.deltaTime / AnimationLength;
         PointLight.intensity = InitialIntensity + IntensityCurve.Evaluate(animationProgress);
+        PointLight.range = InitialRange + (IntensityCurve.Evaluate(animationProgress)*5);
         if (animationProgress >= 1)
         {
             animationProgress = 0;
         }
-        
+
     }
+    
+
 
     public void OnMetronomePulse()
     {

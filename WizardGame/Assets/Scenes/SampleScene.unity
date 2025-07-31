@@ -1733,7 +1733,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9248d7c2e9dc9b84d87a76fde4decb9f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1844,7 +1844,7 @@ MonoBehaviour:
   - {fileID: 1906131449}
   - {fileID: 1378166566}
   Leeway: 0.15
-  Bpm: 127
+  Bpm: 117
   MusicSource: {fileID: 1604593434}
   intervals:
   - Steps: 1
@@ -2424,7 +2424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &417699088
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7296,7 +7296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8100425457538774930, guid: fb9c983311c875542b88e294c3eee7f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.771189
+      value: -19.775
       objectReference: {fileID: 0}
     - target: {fileID: 8100425457538774930, guid: fb9c983311c875542b88e294c3eee7f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8017,7 +8017,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2e48af40ced15cf44aeb3382c771e602, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1dd43eb9cda2a2544bf70f1a217fbc72, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.25
   m_Pitch: 1

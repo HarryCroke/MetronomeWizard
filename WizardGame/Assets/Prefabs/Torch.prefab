@@ -189,17 +189,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -0.5
-      outSlope: -0.5
+      inSlope: -0.39999998
+      outSlope: -0.39999998
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0.5
-      inSlope: -0.5
-      outSlope: -0.5
+      value: 0.6
+      inSlope: -0.39999998
+      outSlope: -0.39999998
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -207,7 +207,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  InitialIntensity: 1
+  InitialIntensity: 0.75
+  InitialRange: 10
   PointLight: {fileID: 8100425459015392989}
   AnimationLength: 1
   AnimationDistance: 0.5
@@ -257,7 +258,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.65916854, b: 0, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -295,7 +296,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1

@@ -16,7 +16,8 @@ public class Metronome : MonoBehaviour
     public SpellSlot[] SpellSlots;
     private SpellType[] SpellList = new SpellType[8];
     
-    private float delay;
+    [NonSerialized]
+    public float delay;
     private int beat = 0;
 
     public delegate void OnBeat();
@@ -42,7 +43,7 @@ public class Metronome : MonoBehaviour
     private float fixedDelta = 0.02f;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         delay = 60 / Bpm;
         MetronomeUI.Delay = delay;
@@ -57,13 +58,12 @@ public class Metronome : MonoBehaviour
     {
         foreach (Intervals interval in intervals)
         {
+            previousAudioTime = currentAudioTime;
+            currentAudioTime = MusicSource.time;
             float sampleTime =
                 (MusicSource.timeSamples / (MusicSource.clip.frequency * interval.GetIntervalLength(Bpm)));
             interval.CheckForNewInterval(sampleTime);
         }
-        
-        previousAudioTime = currentAudioTime;
-        currentAudioTime = MusicSource.time;
         
         fixedDelta = currentAudioTime - previousAudioTime;
         
@@ -79,26 +79,26 @@ public class Metronome : MonoBehaviour
         if(Mathf.Abs(timeTillNextBeat - Leeway) < 0.02f) spellAlreadyCast = false;
     }
 
-    IEnumerator MetronomePulse()
-    {
-        if (!Player.MenuOpen)
-        {
-            //Spells.CastSpell(SpellList[beat]);
-            AudioSource.PlayOneShot(AudioClip);
-        }
-
-        if (onBeat != null) onBeat();
-
-        timeTillNextBeat = delay; 
-        timeSinceLastBeat = 0;
-        
-        beat += 1;
-        if(beat > 7) beat = 0;
-        
-        yield return new WaitForSeconds(delay);
-        
-        StartCoroutine(MetronomePulse());
-    }
+    // IEnumerator MetronomePulse()
+    // {
+    //     if (!Player.MenuOpen)
+    //     {
+    //         //Spells.CastSpell(SpellList[beat]);
+    //         AudioSource.PlayOneShot(AudioClip);
+    //     }
+    //
+    //     if (onBeat != null) onBeat();
+    //
+    //     timeTillNextBeat = delay; 
+    //     timeSinceLastBeat = 0;
+    //     
+    //     beat += 1;
+    //     if(beat > 7) beat = 0;
+    //     
+    //     yield return new WaitForSeconds(delay);
+    //     
+    //     StartCoroutine(MetronomePulse());
+    // }
 
     public void OnSampledBeat()
     {
@@ -142,6 +142,7 @@ public class Metronome : MonoBehaviour
         //StartCoroutine(MetronomePulse());
         MusicSource.Play();
         Playing = true;
+        //OnSampledBeat();
     }
 }
 

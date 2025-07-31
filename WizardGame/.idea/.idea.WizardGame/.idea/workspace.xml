@@ -14,8 +14,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../Capyball/Assets/Scripts/LightFlicker.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Capyball/Assets/Scripts/Opponent AI/AIController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Capyball/Assets/Scripts/Utilities.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LightFlicker.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -93,7 +95,7 @@
       <updated>1753900244879</updated>
       <workItem from="1753900247121" duration="6025000" />
       <workItem from="1753910744313" duration="7000" />
-      <workItem from="1753910762229" duration="4560000" />
+      <workItem from="1753910762229" duration="6151000" />
     </task>
     <servers />
   </component>

@@ -24,15 +24,7 @@ public class Metronome : MonoBehaviour
         delay = 60 / Bpm;
         MetronomeUI.Delay = delay;
         StartCoroutine(MetronomePulse());
-
-        SpellList[0] = SpellType.Firebolt;
-        SpellList[1] = SpellType.Firebolt;
-        SpellList[2] = SpellType.Firebolt;
-        SpellList[3] = SpellType.Jump;
-        SpellList[4] = SpellType.Firebolt;
-        SpellList[5] = SpellType.Dash;
-        SpellList[6] = SpellType.Jump;
-        SpellList[7] = SpellType.Jump;
+        
     }
 
     // Update is called once per frame

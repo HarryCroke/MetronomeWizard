@@ -16,7 +16,11 @@ using UnityEngine.UI;
 
 public class FirstPersonController : MonoBehaviour
 {
+    
     public Rigidbody rb;
+    public GameObject GameUI;
+    public GameObject InventoryUI;
+    public bool MenuOpen;
 
     #region Camera Movement Variables
 
@@ -271,6 +275,33 @@ public class FirstPersonController : MonoBehaviour
 
         #endregion
         #endregion
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            // CLOSE MENU
+            if (MenuOpen)
+            {
+                GetComponent<Metronome>().FillOutSpellList();
+                MenuOpen = false;
+                GameUI.SetActive(true);
+                InventoryUI.SetActive(false);
+                cameraCanMove = true;
+                playerCanMove = true;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            // OPEN MENU
+            else
+            {
+                MenuOpen = true;
+                GameUI.SetActive(false);
+                InventoryUI.SetActive(true);
+                cameraCanMove = false;
+                playerCanMove = false;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
 
         #region Sprint
 
@@ -548,11 +579,19 @@ public class FirstPersonController : MonoBehaviour
     {
         SerFPC.Update();
 
+
+        
         EditorGUILayout.Space();
         GUILayout.Label("Modular First Person Controller", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, fontSize = 16 });
         GUILayout.Label("By Jess Case", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Normal, fontSize = 12 });
         GUILayout.Label("version 1.0.1", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Normal, fontSize = 12 });
         EditorGUILayout.Space();
+        
+        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+        GUILayout.Label("Random crap", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, fontSize = 13 }, GUILayout.ExpandWidth(true));
+        
+        fpc.GameUI = (GameObject)EditorGUILayout.ObjectField(new GUIContent("GAme UI", "Camera attached to the controller."), fpc.GameUI, typeof(GameObject), true);
+        fpc.InventoryUI = (GameObject)EditorGUILayout.ObjectField(new GUIContent("Inventory", "Camera attached to the controller."), fpc.InventoryUI, typeof(GameObject), true);
 
         #region Camera Setup
 

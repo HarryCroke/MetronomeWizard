@@ -26,7 +26,6 @@ public class Spells : MonoBehaviour
                 break;
             
             default:
-                print("dud");
                 break;
         }
     }

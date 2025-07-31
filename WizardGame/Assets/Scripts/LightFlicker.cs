@@ -34,19 +34,20 @@ public class LightFlicker : MonoBehaviour, IPulseReceiver
     }
     //
     // // Update is called once per frame
-    // void Update()
-    // {
-    //     animationProgress += Time.deltaTime / AnimationLength;
-    //     PointLight.intensity = InitialIntensity + IntensityCurve.Evaluate(animationProgress);
-    //     if (animationProgress >= 1)
-    //     {
-    //         animationProgress = 0;
-    //     }
-    //     
-    // }
+    void Update()
+    {
+        animationProgress += Time.deltaTime / AnimationLength;
+        PointLight.intensity = InitialIntensity + IntensityCurve.Evaluate(animationProgress);
+        if (animationProgress >= 1)
+        {
+            animationProgress = 0;
+        }
+        
+    }
 
     public void OnMetronomePulse()
     {
         print("Got your message");
+        animationProgress = 0;
     }
 }

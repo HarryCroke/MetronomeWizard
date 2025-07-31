@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Slot
   - Bolt
+  - Projectile
+  - Skull
   layers:
   - Default
   - TransparentFX

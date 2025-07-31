@@ -5,19 +5,24 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public GameObject TriggeredObject;
+    public GameObject[] TriggeredObject;
     
     private void OnTriggerEnter(Collider other)
     {
         print("Collison");
         if (other.tag == "Bolt" && TriggeredObject != null)
         {
-            TriggeredObject.GetComponent<ITriggerable>().Trigger();
+            foreach (GameObject o in TriggeredObject)
+            {
+                o.GetComponent<ITriggerable>().Trigger();
+            }
+            
             if (gameObject.GetComponent<AudioSource>())
             {
                 AudioSource source = gameObject.GetComponent<AudioSource>();
                 Utilities.PlayAtRandomPitch(source, source.clip);
             }
+
         }
     }
 }

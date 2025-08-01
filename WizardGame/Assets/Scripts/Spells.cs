@@ -1,6 +1,7 @@
 using System;using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spells : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class Spells : MonoBehaviour
     
     public float DashSpeed;
     public GameObject FireboltPrefab;
+
+    public Image RightHand;
+    public Sprite[] HandSprites;
+    private int currentHandSprite;
     
     public void CastSpell(SpellType type)
     {
@@ -33,12 +38,16 @@ public class Spells : MonoBehaviour
     private void Jump()
     {
         Player.Jump();
+        currentHandSprite = 2;
+        UpdateHandSprite();
     }
 
     private void Dash()
     {
         Vector3 targetVelocity = transform.TransformDirection(new Vector3(0,0,DashSpeed));
         Player.rb.AddForce(targetVelocity, ForceMode.VelocityChange);
+        currentHandSprite = 4;
+        UpdateHandSprite();
     }
 
     private void Firebolt()
@@ -46,6 +55,19 @@ public class Spells : MonoBehaviour
         GameObject f = Instantiate(FireboltPrefab, transform.position + new Vector3(0,0.5f,0), Quaternion.identity);
         Projectile p = f.GetComponent<Projectile>();
         p.Direction = transform.forward;
+        currentHandSprite = 0;
+        UpdateHandSprite();
+    }
+
+    private void UpdateHandSprite()
+    {
+        RightHand.sprite = HandSprites[currentHandSprite];
+    }
+
+    public void ProgressHand()
+    {
+        currentHandSprite++;
+        UpdateHandSprite();
     }
 
 }

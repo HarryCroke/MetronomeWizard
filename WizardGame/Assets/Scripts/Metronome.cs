@@ -9,7 +9,7 @@ public class Metronome : MonoBehaviour
 {
     [FormerlySerializedAs("audioClip")] public AudioClip AudioClip;
     [FormerlySerializedAs("audioSource")] public AudioSource AudioSource;
-    public MetronomeUI MetronomeUI;
+    public NewMetronomeUI MetronomeUI;
     public FirstPersonController Player;
     
     public Spells Spells;
@@ -18,7 +18,8 @@ public class Metronome : MonoBehaviour
     
     [NonSerialized]
     public float delay;
-    private int beat = 0;
+    [NonSerialized]
+    public int beat = 0;
 
     public delegate void OnBeat();
     public static OnBeat onBeat;
@@ -46,7 +47,7 @@ public class Metronome : MonoBehaviour
     void Awake()
     {
         delay = 60 / Bpm;
-        MetronomeUI.Delay = delay;
+        MetronomeUI.Metronome = this;
         StartCoroutine(DelayedStart());
         Player = GetComponent<FirstPersonController>();
         maxTime = delay * 8;
@@ -76,7 +77,7 @@ public class Metronome : MonoBehaviour
             timeTillNextBeat -= fixedDelta;
         }
         
-        if(Mathf.Abs(timeTillNextBeat - Leeway) < 0.02f) spellAlreadyCast = false;
+        if(Mathf.Abs(timeTillNextBeat - (Leeway/2)) < 0.02f) spellAlreadyCast = false;
     }
 
     // IEnumerator MetronomePulse()
@@ -102,6 +103,10 @@ public class Metronome : MonoBehaviour
 
     public void OnSampledBeat()
     {
+        
+        beat += 1;
+        if(beat > 7) beat = 0;
+        
         if (!Player.MenuOpen)
         {
             //Spells.CastSpell(SpellList[beat]);
@@ -113,8 +118,7 @@ public class Metronome : MonoBehaviour
         timeTillNextBeat = delay; 
         timeSinceLastBeat = 0;
         
-        beat += 1;
-        if(beat > 7) beat = 0;
+
     }
 
     public void FillOutSpellList()
@@ -132,6 +136,7 @@ public class Metronome : MonoBehaviour
         if (timeSinceLastBeat < Leeway || timeTillNextBeat < Leeway)
         {
             Spells.CastSpell(SpellList[beat]);
+            if(SpellList[beat] != SpellType.None) StartCoroutine(HandAnimation());
             spellAlreadyCast = true;
         }
     }
@@ -143,6 +148,12 @@ public class Metronome : MonoBehaviour
         MusicSource.Play();
         Playing = true;
         //OnSampledBeat();
+    }
+
+    IEnumerator HandAnimation()
+    {
+        yield return new WaitForSeconds(delay/4);
+        Spells.ProgressHand();
     }
 }
 

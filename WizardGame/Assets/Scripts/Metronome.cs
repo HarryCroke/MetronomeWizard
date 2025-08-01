@@ -14,7 +14,8 @@ public class Metronome : MonoBehaviour
     
     public Spells Spells;
     public SpellSlot[] SpellSlots;
-    private SpellType[] SpellList = new SpellType[8];
+    [NonSerialized]
+    public SpellType[] SpellList = new SpellType[8];
     
     [NonSerialized]
     public float delay;
@@ -138,6 +139,8 @@ public class Metronome : MonoBehaviour
         {
             SpellList[i] = SpellSlots[i].Type;
         }
+        
+        MetronomeUI.UpdateIcons();
     }
 
     public void OnFire()

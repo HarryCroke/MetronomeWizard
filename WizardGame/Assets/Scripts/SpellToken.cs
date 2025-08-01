@@ -12,6 +12,7 @@ public class SpellToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public Image Image;
     public SpellType Type;
     private FirstPersonController player;
+    private Vector3 InitialPosition;
     
     private SpellSlot currentSlot;
     
@@ -20,11 +21,19 @@ public class SpellToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private void Start()
     {
         player = GameObject.Find("FirstPersonController").GetComponent<FirstPersonController>();
+        InitialPosition = transform.position;
     }
 
     public virtual void OnBeginDrag(PointerEventData eventData)
     {
         beingDragged = true;
+        if (currentSlot != null)
+        {
+            OnEndDrag(null);
+            transform.position = InitialPosition;
+            currentSlot.Type = SpellType.None;
+            currentSlot = null;
+        }
     }
 
     public virtual void OnDrag(PointerEventData eventData)

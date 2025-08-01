@@ -82,6 +82,7 @@ public class Necroskull : MonoBehaviour, IPulseReceiver
 
     void Dash()
     {
+        if(rb == null) return;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         
@@ -97,9 +98,15 @@ public class Necroskull : MonoBehaviour, IPulseReceiver
             if (health <= 0)
             {
                 if(EnemyClear != null) EnemyClear.OnKill(this.gameObject);
-                
-                Destroy(gameObject);
+
+                StartCoroutine(LateDestroy());
             }
         }
+    }
+
+    IEnumerator LateDestroy()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
     }
 }

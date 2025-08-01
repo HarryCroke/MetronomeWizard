@@ -40585,7 +40585,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2160
+  m_Name: pb_Mesh27616
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -55155,6 +55155,10 @@ PrefabInstance:
     - target: {fileID: 8764459721823825895, guid: 4bed4f28e85584644bb5a14e5da559e2, type: 3}
       propertyPath: m_Name
       value: book
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764459721823825896, guid: 4bed4f28e85584644bb5a14e5da559e2, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8764459721823825897, guid: 4bed4f28e85584644bb5a14e5da559e2, type: 3}
       propertyPath: m_RootOrder

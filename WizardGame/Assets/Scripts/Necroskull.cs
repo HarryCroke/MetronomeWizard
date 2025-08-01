@@ -18,6 +18,9 @@ public class Necroskull : MonoBehaviour, IPulseReceiver
     public float Deceleration;
     private Rigidbody rb;
     private AudioSource source;
+
+    [NonSerialized]
+    public EnemyClear EnemyClear;
     
     // Start is called before the first frame update
     void Start()
@@ -93,6 +96,8 @@ public class Necroskull : MonoBehaviour, IPulseReceiver
             health -= other.GetComponent<Projectile>().Damage;
             if (health <= 0)
             {
+                if(EnemyClear != null) EnemyClear.OnKill(this.gameObject);
+                
                 Destroy(gameObject);
             }
         }

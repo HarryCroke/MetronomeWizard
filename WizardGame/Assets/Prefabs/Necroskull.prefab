@@ -121,7 +121,7 @@ MonoBehaviour:
   MaxCountDown: 4
   RotationSpeed: 0.003
   DashSpeed: 0.4
-  Deceleration: 0.01
+  Deceleration: 0.015
 --- !u!82 &1568846464025934626
 AudioSource:
   m_ObjectHideFlags: 0

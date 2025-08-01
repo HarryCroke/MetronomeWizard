@@ -118,6 +118,11 @@ public class Metronome : MonoBehaviour
         CurrentBeatTime = MusicSource.time;
         delay = CurrentBeatTime - PreviousBeatTime;
         spellReset = false;
+
+        if (!spellAlreadyCast)
+        {
+            Spells.SetSpecificHand(8);
+        }
         
         if (!Player.MenuOpen)
         {
@@ -149,6 +154,10 @@ public class Metronome : MonoBehaviour
         if (timeUntilNextBeat < timeSinceLastBeat)
         {
             spellAdjustment = 1;
+            if (beat == 7)
+            {
+                spellAdjustment = -7;
+            }
         }
         
         if (Player.MenuOpen || spellAlreadyCast) return;
@@ -157,6 +166,10 @@ public class Metronome : MonoBehaviour
         {
             Spells.CastSpell(SpellList[beat+spellAdjustment]);
             if(SpellList[beat+spellAdjustment] != SpellType.None) StartCoroutine(HandAnimation());
+            else
+            {
+                Spells.SetSpecificHand(8);
+            }
             spellAlreadyCast = true;
         }
     }

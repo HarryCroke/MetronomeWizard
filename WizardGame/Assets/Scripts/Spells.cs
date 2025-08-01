@@ -64,6 +64,12 @@ public class Spells : MonoBehaviour
         RightHand.sprite = HandSprites[currentHandSprite];
     }
 
+    public void SetSpecificHand(int sprite)
+    {
+        currentHandSprite = sprite;
+        UpdateHandSprite();
+    }
+
     public void ProgressHand()
     {
         currentHandSprite++;

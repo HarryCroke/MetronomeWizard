@@ -26,5 +26,16 @@ public class PlayerHealth : MonoBehaviour
             Health -= other.gameObject.GetComponent<Necroskull>().damage;
             print(Health);
         }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Evil")
+        {
+            Health -= Mathf.FloorToInt(other.gameObject.GetComponent<Projectile>().Damage);
+            print(Health);
+            Destroy(other.gameObject);
+        }
     }
 }

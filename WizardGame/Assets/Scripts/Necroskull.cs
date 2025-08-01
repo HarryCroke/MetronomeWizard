@@ -9,21 +9,22 @@ public class Necroskull : MonoBehaviour, IPulseReceiver
     public int damage = 10;
     private float range = 100;
     private GameObject player;
-    private bool canSeePlayer;
-    private int CountDown;
+    protected bool canSeePlayer;
+    protected int CountDown;
     public int MaxCountDown;
     public float RotationSpeed;
     public float DashSpeed;
     private float currentSpeed;
     public float Deceleration;
     private Rigidbody rb;
-    private AudioSource source;
+    protected AudioSource source;
+    public AudioClip DashSound;
 
     [NonSerialized]
     public EnemyClear EnemyClear;
     
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
         source = GetComponent<AudioSource>();
@@ -46,7 +47,7 @@ public class Necroskull : MonoBehaviour, IPulseReceiver
             canSeePlayer = false;
         }
 
-        if (currentSpeed > 0.1)
+        if (currentSpeed > 0.01)
         {
             transform.position += transform.forward * (currentSpeed);
             currentSpeed -= Deceleration;
@@ -69,7 +70,7 @@ public class Necroskull : MonoBehaviour, IPulseReceiver
         }
     }
 
-    public void OnMetronomePulse()
+    public virtual void OnMetronomePulse()
     {
         if(!canSeePlayer) return;
         CountDown--;
@@ -87,7 +88,7 @@ public class Necroskull : MonoBehaviour, IPulseReceiver
         rb.angularVelocity = Vector3.zero;
         
         currentSpeed = DashSpeed;
-        Utilities.PlayAtRandomPitch(source, source.clip, 0.1f);
+        Utilities.PlayAtRandomPitch(source, DashSound, 0.1f);
     }
 
     private void OnTriggerEnter(Collider other)

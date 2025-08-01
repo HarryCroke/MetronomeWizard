@@ -8,6 +8,7 @@ TagManager:
   - Bolt
   - Projectile
   - Skull
+  - Evil
   layers:
   - Default
   - TransparentFX

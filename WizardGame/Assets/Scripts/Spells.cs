@@ -13,6 +13,9 @@ public class Spells : MonoBehaviour
     public Image RightHand;
     public Sprite[] HandSprites;
     private int currentHandSprite;
+
+    public AudioSource SpellSource;
+    public AudioClip[] SpellSounds;
     
     public void CastSpell(SpellType type)
     {
@@ -20,14 +23,17 @@ public class Spells : MonoBehaviour
         {
             case SpellType.Firebolt:
                 Firebolt();
+                Utilities.PlayAtRandomPitch(SpellSource, SpellSounds[0], 0.1f);
                 break;
             
             case SpellType.Jump:
                 Jump();
+                Utilities.PlayAtRandomPitch(SpellSource, SpellSounds[1], 0.1f);
                 break;
             
             case SpellType.Dash:
                 Dash();
+                Utilities.PlayAtRandomPitch(SpellSource, SpellSounds[2], 0.1f);
                 break;
             
             default:

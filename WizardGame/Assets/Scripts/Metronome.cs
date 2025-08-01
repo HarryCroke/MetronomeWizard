@@ -24,9 +24,8 @@ public class Metronome : MonoBehaviour
     public delegate void OnBeat();
     public static OnBeat onBeat;
     
-    private float timeTillNextBeat, timeSinceLastBeat;
-    public float Leeway = 0.15f;
-    private bool spellAlreadyCast;
+    public float Leeway = 0.075f;
+    private bool spellAlreadyCast, spellReset;
     
     [FormerlySerializedAs("BPM")] public float Bpm;
     private float currentAudioTime, previousAudioTime;
@@ -41,7 +40,10 @@ public class Metronome : MonoBehaviour
 
     private bool Playing;
 
-    private float fixedDelta = 0.02f;
+    private float fixedDelta;
+    
+    private float timeSinceLastBeat, timeUntilNextBeat;
+    private float PreviousBeatTime, CurrentBeatTime;
     
     // Start is called before the first frame update
     void Awake()
@@ -66,18 +68,22 @@ public class Metronome : MonoBehaviour
             interval.CheckForNewInterval(sampleTime);
         }
         
+        // Should be called "AudioDelta"
         fixedDelta = currentAudioTime - previousAudioTime;
         
         // Again, this is just for the UI
         if (Playing)
         {
-            currentTime += fixedDelta;
-            if(currentTime >= maxTime) currentTime = 0;
+            timeUntilNextBeat -= fixedDelta;
             timeSinceLastBeat += fixedDelta;
-            timeTillNextBeat -= fixedDelta;
+
+            if (timeSinceLastBeat > Leeway && !spellReset)
+            {
+                spellAlreadyCast = false;
+                spellReset = true;
+            }
         }
         
-        if(Mathf.Abs(timeTillNextBeat - (Leeway/2)) < 0.02f) spellAlreadyCast = false;
     }
 
     // IEnumerator MetronomePulse()
@@ -106,6 +112,11 @@ public class Metronome : MonoBehaviour
         
         beat += 1;
         if(beat > 7) beat = 0;
+
+        PreviousBeatTime = CurrentBeatTime;
+        CurrentBeatTime = MusicSource.time;
+        delay = CurrentBeatTime - PreviousBeatTime;
+        spellReset = false;
         
         if (!Player.MenuOpen)
         {
@@ -115,7 +126,7 @@ public class Metronome : MonoBehaviour
 
         if (onBeat != null) onBeat();
 
-        timeTillNextBeat = delay; 
+        timeUntilNextBeat = delay;
         timeSinceLastBeat = 0;
         
 
@@ -131,12 +142,18 @@ public class Metronome : MonoBehaviour
 
     public void OnFire()
     {
+        int spellAdjustment = 0;
+        if (timeUntilNextBeat < timeSinceLastBeat)
+        {
+            spellAdjustment = 1;
+        }
+        
         if (Player.MenuOpen || spellAlreadyCast) return;
         
-        if (timeSinceLastBeat < Leeway || timeTillNextBeat < Leeway)
+        if (timeSinceLastBeat < Leeway || timeUntilNextBeat < Leeway)
         {
-            Spells.CastSpell(SpellList[beat]);
-            if(SpellList[beat] != SpellType.None) StartCoroutine(HandAnimation());
+            Spells.CastSpell(SpellList[beat+spellAdjustment]);
+            if(SpellList[beat+spellAdjustment] != SpellType.None) StartCoroutine(HandAnimation());
             spellAlreadyCast = true;
         }
     }

@@ -1,6 +1,7 @@
 using System;using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Spells : MonoBehaviour
@@ -13,6 +14,7 @@ public class Spells : MonoBehaviour
     public Image RightHand;
     public Sprite[] HandSprites;
     private int currentHandSprite;
+    public float Deceleration;
 
     public AudioSource SpellSource;
     public AudioClip[] SpellSounds;
@@ -50,10 +52,19 @@ public class Spells : MonoBehaviour
 
     private void Dash()
     {
-        Vector3 targetVelocity = transform.TransformDirection(new Vector3(0,0,DashSpeed));
-        Player.rb.AddForce(targetVelocity, ForceMode.VelocityChange);
+        Player.DashVelocity = DashSpeed;
         currentHandSprite = 4;
         UpdateHandSprite();
+        //Quaternion.Euler(0, -45, 0);
+    }
+
+    private void FixedUpdate()
+    {
+        Player.DashVelocity *= Deceleration;
+        // if (Player.DashVelocity.magnitude > 0.1f)
+        // {
+        //     Player.DashVelocity = Vector3.zero;
+        // }
     }
 
     private void Firebolt()

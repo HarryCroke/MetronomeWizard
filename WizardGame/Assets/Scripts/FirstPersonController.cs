@@ -21,6 +21,7 @@ public class FirstPersonController : MonoBehaviour
     public GameObject GameUI;
     public GameObject InventoryUI;
     public bool MenuOpen;
+    public float DashVelocity;
 
     #region Camera Movement Variables
 
@@ -402,7 +403,7 @@ public class FirstPersonController : MonoBehaviour
         if (playerCanMove)
         {
             // Calculate how fast we should be moving
-            Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical") + DashVelocity) ;
 
             // Checks if player is walking and isGrounded
             // Will allow head bob

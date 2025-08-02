@@ -11449,7 +11449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8864140007999970649, guid: 22ee8943f0c5b244299a645b3e055f2d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22ee8943f0c5b244299a645b3e055f2d, type: 3}
@@ -14603,6 +14603,7 @@ MonoBehaviour:
   GameUI: {fileID: 389585126}
   InventoryUI: {fileID: 923816383}
   MenuOpen: 0
+  DashVelocity: 0
   playerCamera: {fileID: 1784891978}
   fov: 70
   invertCamera: 0
@@ -14900,7 +14901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 251782591}
-  DashSpeed: 65
+  DashSpeed: 10
   FireboltPrefab: {fileID: 4896672449313960809, guid: fe1ed2b51bb577c4eb0f0cb71f3a41cc, type: 3}
   RightHand: {fileID: 1189216423}
   HandSprites:
@@ -14913,6 +14914,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d1fc2cd03f86285468b0bdecccf9c935, type: 3}
   - {fileID: 21300000, guid: 48f5b5243a7fec244a53407b0912bde1, type: 3}
   - {fileID: 21300000, guid: 3b55f59330d35e147ae5b06ec0b6843c, type: 3}
+  Deceleration: 0.8
   SpellSource: {fileID: 422095803}
   SpellSounds:
   - {fileID: 8300000, guid: f937b8afe2017774185a84f96e63b17e, type: 3}
@@ -64515,7 +64517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8864140007999970649, guid: 22ee8943f0c5b244299a645b3e055f2d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22ee8943f0c5b244299a645b3e055f2d, type: 3}

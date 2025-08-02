@@ -23,7 +23,9 @@ public class Warlock : Necroskull
     {
         base.OnMetronomePulse();
 
-        if(!canSeePlayer) return;
+        
+        
+        if(!canSeePlayer || this == null) return;
         
         attackCountDown1--;
         attackCountDown2--;

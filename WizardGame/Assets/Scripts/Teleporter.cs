@@ -8,6 +8,8 @@ public class Teleporter : MonoBehaviour, ITriggerable
     
     public void Trigger()
     {
-        GameObject.Find("FirstPersonController").transform.position = TeleportPoint.transform.position;
+        GameObject player = GameObject.Find("FirstPersonController");
+        player.transform.position = TeleportPoint.transform.position;
+        player.GetComponent<PlayerHealth>().FlashColour(player.GetComponent<PlayerHealth>().TeleportColor);
     }
 }

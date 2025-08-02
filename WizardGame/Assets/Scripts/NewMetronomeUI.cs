@@ -18,6 +18,9 @@ public class NewMetronomeUI : MonoBehaviour, IPulseReceiver
     public Image LeftHand;
     public Sprite[] MetronomeSprites;
 
+    public Image Heart;
+    public Sprite[] HeartSprites;
+
     private void Start()
     {
         Metronome.onBeat += OnMetronomePulse;
@@ -31,6 +34,7 @@ public class NewMetronomeUI : MonoBehaviour, IPulseReceiver
         
         LeftHand.sprite = MetronomeSprites[beat%2];
         StartCoroutine(MetronomeMiddle());
+        Heart.sprite = HeartSprites[beat%2];
     }
 
     public void UpdateIcons()

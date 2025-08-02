@@ -123,6 +123,8 @@ MonoBehaviour:
   DashSpeed: 0.4
   Deceleration: 0.015
   DashSound: {fileID: 8300000, guid: d6a3839916dc26b4782d0f8d49f436d5, type: 3}
+  OneTimeAudioPrefab: {fileID: 8192666653580820356, guid: d5f9b4b545ca3ab4791adb1b70b47240, type: 3}
+  DeathSound: {fileID: 8300000, guid: 9393ada9e606181488fcaac170e4bdc8, type: 3}
 --- !u!82 &1568846464025934626
 AudioSource:
   m_ObjectHideFlags: 0

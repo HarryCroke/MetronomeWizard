@@ -17,9 +17,9 @@
     <setting file="file://$PROJECT_DIR$/../../Capyball/Assets/Scripts/LightFlicker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Capyball/Assets/Scripts/Opponent AI/AIController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Capyball/Assets/Scripts/Utilities.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/NewMetronomeUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Door.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LightFlicker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OneTimeAudio.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PulseReceiver.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpellSlot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpellToken.cs" root0="FORCE_HIGHLIGHTING" />
@@ -107,7 +107,7 @@
       <workItem from="1753922407679" duration="5449000" />
       <workItem from="1754054287479" duration="10295000" />
       <workItem from="1754086786381" duration="5156000" />
-      <workItem from="1754142199385" duration="3435000" />
+      <workItem from="1754142199385" duration="5132000" />
     </task>
     <servers />
   </component>

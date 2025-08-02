@@ -20,6 +20,10 @@ public class Necroskull : MonoBehaviour, IPulseReceiver
     protected AudioSource source;
     public AudioClip DashSound;
 
+    public GameObject OneTimeAudioPrefab;
+    public AudioClip DeathSound;
+    public AudioClip DamageSound;
+
     [NonSerialized]
     public EnemyClear EnemyClear;
     
@@ -102,11 +106,17 @@ public class Necroskull : MonoBehaviour, IPulseReceiver
 
                 StartCoroutine(LateDestroy());
             }
+            else
+            {
+                if(DamageSound != null) Utilities.PlayAtRandomPitch(source, DamageSound, 0.3f);
+            }
         }
     }
 
     IEnumerator LateDestroy()
     {
+        GameObject o = Instantiate(OneTimeAudioPrefab, transform.position, Quaternion.identity);
+        o.GetComponent<OneTimeAudio>().Begin(DeathSound);
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }

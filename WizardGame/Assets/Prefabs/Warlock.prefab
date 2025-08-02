@@ -291,7 +291,10 @@ MonoBehaviour:
   RotationSpeed: 1
   DashSpeed: 0.05
   Deceleration: 0.0005
-  DashSound: {fileID: 8300000, guid: 57bc5674bacad43468113171153616dd, type: 3}
+  DashSound: {fileID: 0}
+  OneTimeAudioPrefab: {fileID: 8192666653580820356, guid: d5f9b4b545ca3ab4791adb1b70b47240, type: 3}
+  DeathSound: {fileID: 8300000, guid: fb4fecca3968ad3439e9f19112ca7091, type: 3}
+  DamageSound: {fileID: 8300000, guid: 4c19242edd3f83247b20c0cfcf24e2b6, type: 3}
   AttackMaxCountDown: 4
   FireboltPrefab: {fileID: 4896672449313960809, guid: 0d09d5084238b61459de0a2087ead863, type: 3}
   SpellSound: {fileID: 8300000, guid: 45b58fcc14e2e7f4795468760b60b71a, type: 3}
